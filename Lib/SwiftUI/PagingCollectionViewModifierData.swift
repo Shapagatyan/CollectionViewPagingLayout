@@ -27,19 +27,19 @@ struct PagingCollectionViewModifierData {
 }
 
 protocol CollectionViewPropertyProtocol {
-    func getKey<T>() -> WritableKeyPath<UICollectionView, T>?
-    func getValue<T>() -> T?
+    func getKey<V>() -> WritableKeyPath<UICollectionView, V>?
+    func getValue<V>() -> V?
 }
 
 struct CollectionViewProperty<T>: CollectionViewPropertyProtocol {
     let keyPath: WritableKeyPath<UICollectionView, T>
     let value: T
 
-    func getKey<T>() -> WritableKeyPath<UICollectionView, T>? {
-        keyPath as? WritableKeyPath<UICollectionView, T>
+    func getKey<V>() -> WritableKeyPath<UICollectionView, V>? {
+        keyPath as? WritableKeyPath<UICollectionView, V>
     }
 
-    func getValue<T>() -> T? {
-        value as? T
+    func getValue<V>() -> V? {
+        value as? V
     }
 }
