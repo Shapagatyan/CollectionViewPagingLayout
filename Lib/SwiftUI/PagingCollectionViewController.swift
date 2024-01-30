@@ -111,7 +111,11 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.isPagingEnabled = true
+
+        #if os(iOS)
+            collectionView.isPagingEnabled = true
+        #endif
+
         modifierData?.collectionViewProperties.forEach { property in
             if let keyPath: WritableKeyPath<UICollectionView, Bool> = property.getKey(),
                let value: Bool = property.getValue() {
